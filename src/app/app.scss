@@ -1,0 +1,24 @@
+@use "styles/variables" as v;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  background: v.$gray-light;
+}
+
+.app-footer {
+  background: v.$pastel-blue-dark;
+  color: v.$white;
+  padding: v.$spacing-lg;
+  text-align: center;
+
+  p {
+    margin: 0;
+    font-size: v.$font-size-sm;
+  }
+}

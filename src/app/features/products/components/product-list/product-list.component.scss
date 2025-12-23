@@ -1,38 +1,37 @@
-@import "styles/variables";
-@import "styles/mixins";
+@use "styles/variables" as v;
+@use "styles/mixins" as m;
 
 .product-list-container {
-  padding: $spacing-xl 0;
+  padding: v.$spacing-xl 0;
   max-width: 1280px;
   margin: 0 auto;
-  padding-left: $spacing-lg;
-  padding-right: $spacing-lg;
-
-  @include mobile {
-    padding: $spacing-lg $spacing-md;
+  padding-left: v.$spacing-lg;
+  padding-right: v.$spacing-lg;
+  @include m.mobile {
+    padding: v.$spacing-lg v.$spacing-md;
   }
 }
 
 .page-header {
   text-align: center;
-  margin-bottom: $spacing-xl;
+  margin-bottom: v.$spacing-xl;
 
   h1 {
-    font-size: $font-size-xxl;
-    color: $pastel-blue-dark;
-    margin-bottom: $spacing-sm;
+    font-size: v.$font-size-xxl;
+    color: v.$pastel-blue-dark;
+    margin-bottom: v.$spacing-sm;
 
-    @include mobile {
-      font-size: $font-size-xl;
+    @include m.mobile {
+      font-size: v.$font-size-xl;
     }
   }
 
   .subtitle {
-    color: $gray-dark;
-    font-size: $font-size-lg;
+    color: v.$gray-dark;
+    font-size: v.$font-size-lg;
 
-    @include mobile {
-      font-size: $font-size-md;
+    @include m.mobile {
+      font-size: v.$font-size-md;
     }
   }
 }
@@ -40,10 +39,10 @@
 .filters-section {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: $spacing-md;
-  margin-bottom: $spacing-xl;
+  gap: v.$spacing-md;
+  margin-bottom: v.$spacing-xl;
 
-  @include tablet {
+  @include m.tablet {
     grid-template-columns: 1fr 1fr;
 
     .search-field {
@@ -51,7 +50,7 @@
     }
   }
 
-  @include mobile {
+  @include m.mobile {
     grid-template-columns: 1fr;
   }
 
@@ -63,12 +62,12 @@
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: $spacing-lg;
+  gap: v.$spacing-lg;
   animation: fadeIn 0.5s ease-in-out;
 
-  @include mobile {
+  @include m.mobile {
     grid-template-columns: 1fr;
-    gap: $spacing-md;
+    gap: v.$spacing-md;
   }
 }
 
@@ -77,12 +76,11 @@
 }
 
 .no-results {
-  @include flex-center;
-  @include flex-column;
-  gap: $spacing-md;
-  padding: $spacing-xxl;
-  color: $gray-dark;
-
+  @include m.flex-center;
+  @include m.flex-column;
+  gap: v.$spacing-md;
+  padding: v.$spacing-xxl;
+  color: v.$gray-dark;
   mat-icon {
     font-size: 64px;
     width: 64px;
@@ -91,6 +89,6 @@
   }
 
   h2 {
-    font-size: $font-size-xl;
+    font-size: v.$font-size-xl;
   }
 }

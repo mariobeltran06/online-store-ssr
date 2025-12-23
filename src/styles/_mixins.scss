@@ -1,26 +1,26 @@
-@import 'variables';
+@use 'variables' as v;
 
 // Responsive mixins
 @mixin mobile {
-  @media (max-width: #{$breakpoint-mobile - 1px}) {
+  @media (max-width: #{v.$breakpoint-mobile - 1px}) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
+  @media (min-width: #{v.$breakpoint-mobile}) and (max-width: #{v.$breakpoint-tablet - 1px}) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width: #{$breakpoint-tablet}) {
+  @media (min-width: #{v.$breakpoint-tablet}) {
     @content;
   }
 }
 
 @mixin mobile-and-tablet {
-  @media (max-width: #{$breakpoint-tablet - 1px}) {
+  @media (max-width: #{v.$breakpoint-tablet - 1px}) {
     @content;
   }
 }
@@ -45,22 +45,22 @@
 
 // Card mixin
 @mixin card {
-  background: $white;
-  border-radius: $border-radius-md;
-  box-shadow: $shadow-md;
-  padding: $spacing-lg;
+  background: v.$white;
+  border-radius: v.$border-radius-md;
+  box-shadow: v.$shadow-md;
+  padding: v.$spacing-lg;
   transition: all 0.3s ease;
 
   &:hover {
-    box-shadow: $shadow-lg;
+    box-shadow: v.$shadow-lg;
     transform: translateY(-2px);
   }
 }
 
 // Button mixin
 @mixin button-base {
-  padding: $spacing-sm $spacing-lg;
-  border-radius: $border-radius-md;
+  padding: v.$spacing-sm v.$spacing-lg;
+  border-radius: v.$border-radius-md;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -70,7 +70,7 @@
   outline: none;
 
   &:focus {
-    outline: 2px solid $pastel-blue-dark;
+    outline: 2px solid v.$pastel-blue-dark;
     outline-offset: 2px;
   }
 

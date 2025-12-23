@@ -1,20 +1,21 @@
 @use '@angular/material' as mat;
-@import 'variables';
+@use 'sass:color';
+@use 'styles/variables' as *;
 
 @include mat.core();
 
 // Definir paletas personalizadas
-$app-primary: mat.define-palette((
+$app-primary: mat.m2-define-palette((
   50: $pastel-blue-light,
-  100: lighten($pastel-blue, 10%),
-  200: lighten($pastel-blue, 5%),
+  100: color.adjust($pastel-blue, $lightness: 10%),
+  200: color.adjust($pastel-blue, $lightness: 5%),
   300: $pastel-blue,
-  400: darken($pastel-blue, 5%),
+  400: color.adjust($pastel-blue, $lightness: -5%),
   500: $pastel-blue-dark,
-  600: darken($pastel-blue-dark, 5%),
-  700: darken($pastel-blue-dark, 10%),
-  800: darken($pastel-blue-dark, 15%),
-  900: darken($pastel-blue-dark, 20%),
+  600: color.adjust($pastel-blue-dark, $lightness: -5%),
+  700: color.adjust($pastel-blue-dark, $lightness: -10%),
+  800: color.adjust($pastel-blue-dark, $lightness: -15%),
+  900: color.adjust($pastel-blue-dark, $lightness: -20%),
   contrast: (
     50: $black,
     100: $black,
@@ -29,17 +30,17 @@ $app-primary: mat.define-palette((
   )
 ));
 
-$app-accent: mat.define-palette((
+$app-accent: mat.m2-define-palette((
   50: $pastel-purple-light,
-  100: lighten($pastel-purple, 10%),
-  200: lighten($pastel-purple, 5%),
+  100: color.adjust($pastel-purple, $lightness: 10%),
+  200: color.adjust($pastel-purple, $lightness: 5%),
   300: $pastel-purple,
-  400: darken($pastel-purple, 5%),
+  400: color.adjust($pastel-purple, $lightness: -5%),
   500: $pastel-purple-dark,
-  600: darken($pastel-purple-dark, 5%),
-  700: darken($pastel-purple-dark, 10%),
-  800: darken($pastel-purple-dark, 15%),
-  900: darken($pastel-purple-dark, 20%),
+  600: color.adjust($pastel-purple-dark, $lightness: -5%),
+  700: color.adjust($pastel-purple-dark, $lightness: -10%),
+  800: color.adjust($pastel-purple-dark, $lightness: -15%),
+  900: color.adjust($pastel-purple-dark, $lightness: -20%),
   contrast: (
     50: $black,
     100: $black,
@@ -54,16 +55,16 @@ $app-accent: mat.define-palette((
   )
 ));
 
-$app-warn: mat.define-palette(mat.$red-palette);
+$app-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
 // Crear tema
-$app-theme: mat.define-light-theme((
+$app-theme: mat.m2-define-light-theme((
   color: (
     primary: $app-primary,
     accent: $app-accent,
     warn: $app-warn,
   ),
-  typography: mat.define-typography-config(
+  typography: mat.m2-define-typography-config(
     $font-family: $font-family,
   ),
   density: 0,

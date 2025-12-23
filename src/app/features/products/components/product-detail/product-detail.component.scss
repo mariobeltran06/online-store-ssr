@@ -1,33 +1,33 @@
-@import "styles/variables";
-@import "styles/mixins";
+@use "styles/variables" as v;
+@use "styles/mixins" as m;
 
 .product-detail-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: $spacing-xl $spacing-lg;
+  padding: v.$spacing-xl v.$spacing-lg;
 
-  @include mobile {
-    padding: $spacing-lg $spacing-md;
+  @include m.mobile {
+    padding: v.$spacing-lg v.$spacing-md;
   }
 }
 
 .back-button {
-  margin-bottom: $spacing-lg;
+  margin-bottom: v.$spacing-lg;
 
   mat-icon {
-    margin-right: $spacing-xs;
+    margin-right: v.$spacing-xs;
   }
 }
 
 .product-detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $spacing-xxl;
+  gap: v.$spacing-xxl;
   animation: fadeIn 0.5s ease-in-out;
 
-  @include mobile-and-tablet {
+  @include m.mobile-and-tablet {
     grid-template-columns: 1fr;
-    gap: $spacing-lg;
+    gap: v.$spacing-lg;
   }
 }
 
@@ -36,7 +36,7 @@
   top: 80px;
   height: fit-content;
 
-  @include mobile-and-tablet {
+  @include m.mobile-and-tablet {
     position: relative;
     top: 0;
   }
@@ -45,8 +45,8 @@
 .product-image {
   width: 100%;
   height: auto;
-  border-radius: $border-radius-lg;
-  box-shadow: $shadow-lg;
+  border-radius: v.$border-radius-lg;
+  box-shadow: v.$shadow-lg;
   object-fit: cover;
   max-height: 600px;
 }
@@ -54,31 +54,31 @@
 .product-info-section {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: v.$spacing-lg;
 }
 
 .category-chip {
   align-self: flex-start;
-  background: $pastel-purple-light !important;
-  color: $pastel-purple-dark;
+  background: v.$pastel-purple-light !important;
+  color: v.$pastel-purple-dark;
   font-weight: 600;
 }
 
 .product-title {
-  font-size: $font-size-xxl;
+  font-size: v.$font-size-xxl;
   font-weight: 700;
-  color: $black;
+  color: v.$black;
   margin: 0;
 
-  @include mobile {
-    font-size: $font-size-xl;
+  @include m.mobile {
+    font-size: v.$font-size-xl;
   }
 }
 
 .rating-section {
   display: flex;
   align-items: center;
-  gap: $spacing-xs;
+  gap: v.$spacing-xs;
 }
 
 .star-icon {
@@ -89,14 +89,14 @@
 }
 
 .rating-value {
-  font-size: $font-size-lg;
+  font-size: v.$font-size-lg;
   font-weight: 600;
-  color: $black;
+  color: v.$black;
 }
 
 .rating-text {
-  color: $gray-dark;
-  font-size: $font-size-sm;
+  color: v.$gray-dark;
+  font-size: v.$font-size-sm;
 }
 
 .price-section {
@@ -104,15 +104,15 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: $spacing-md;
+  gap: v.$spacing-md;
 }
 
 .price {
   font-size: 2.5rem;
   font-weight: 700;
-  color: $pastel-blue-dark;
+  color: v.$pastel-blue-dark;
 
-  @include mobile {
+  @include m.mobile {
     font-size: 2rem;
   }
 }
@@ -120,15 +120,15 @@
 .stock-info {
   display: flex;
   align-items: center;
-  gap: $spacing-xs;
-  padding: $spacing-sm $spacing-md;
-  background: $success;
+  gap: v.$spacing-xs;
+  padding: v.$spacing-sm v.$spacing-md;
+  background: v.$success;
   color: white;
-  border-radius: $border-radius-md;
+  border-radius: v.$border-radius-md;
   font-weight: 600;
 
   &.low-stock {
-    background: $warning;
+    background: v.$warning;
   }
 
   mat-icon {
@@ -139,28 +139,28 @@
 }
 
 .out-of-stock {
-  background: $error;
+  background: v.$error;
 }
 
 .description-section {
   h2 {
-    font-size: $font-size-xl;
-    margin-bottom: $spacing-md;
-    color: $black;
+    font-size: v.$font-size-xl;
+    margin-bottom: v.$spacing-md;
+    color: v.$black;
   }
 
   p {
-    color: $gray-dark;
+    color: v.$gray-dark;
     line-height: 1.8;
-    font-size: $font-size-md;
+    font-size: v.$font-size-md;
   }
 }
 
 .features-section {
   h3 {
-    font-size: $font-size-lg;
-    margin-bottom: $spacing-md;
-    color: $black;
+    font-size: v.$font-size-lg;
+    margin-bottom: v.$spacing-md;
+    color: v.$black;
   }
 
   ul {
@@ -171,12 +171,12 @@
     li {
       display: flex;
       align-items: center;
-      gap: $spacing-sm;
-      padding: $spacing-sm 0;
-      color: $gray-dark;
+      gap: v.$spacing-sm;
+      padding: v.$spacing-sm 0;
+      color: v.$gray-dark;
 
       mat-icon {
-        color: $success;
+        color: v.$success;
         font-size: 20px;
         width: 20px;
         height: 20px;
@@ -187,11 +187,11 @@
 
 .actions-section {
   display: flex;
-  gap: $spacing-md;
+  gap: v.$spacing-md;
   align-items: flex-start;
   flex-wrap: wrap;
 
-  @include mobile {
+  @include m.mobile {
     flex-direction: column;
   }
 }
@@ -199,7 +199,7 @@
 .quantity-field {
   width: 120px;
 
-  @include mobile {
+  @include m.mobile {
     width: 100%;
   }
 }
@@ -207,35 +207,35 @@
 .add-to-cart-btn,
 .buy-now-btn {
   flex: 1;
-  padding: $spacing-md $spacing-lg;
-  font-size: $font-size-md;
+  padding: v.$spacing-md v.$spacing-lg;
+  font-size: v.$font-size-md;
   font-weight: 600;
 
-  @include mobile {
+  @include m.mobile {
     width: 100%;
   }
 
   mat-icon {
-    margin-right: $spacing-xs;
+    margin-right: v.$spacing-xs;
   }
 }
 
 .not-found {
-  @include flex-center;
-  @include flex-column;
-  gap: $spacing-lg;
-  padding: $spacing-xxl;
+  @include m.flex-center;
+  @include m.flex-column;
+  gap: v.$spacing-lg;
+  padding: v.$spacing-xxl;
   text-align: center;
 
   mat-icon {
     font-size: 80px;
     width: 80px;
     height: 80px;
-    color: $gray-dark;
+    color: v.$gray-dark;
   }
 
   h2 {
-    font-size: $font-size-xl;
-    color: $gray-dark;
+    font-size: v.$font-size-xl;
+    color: v.$gray-dark;
   }
 }

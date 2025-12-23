@@ -1,15 +1,15 @@
-@import "styles/variables";
-@import "styles/mixins";
+@use "styles/variables" as v;
+@use "styles/mixins" as m;
 
 .spinner-container {
-  @include flex-center;
-  @include flex-column;
-  gap: $spacing-md;
-  padding: $spacing-xxl;
+  @include m.flex-center;
+  @include m.flex-column;
+  gap: v.$spacing-md;
+  padding: v.$spacing-xxl;
   min-height: 300px;
 }
 
 .loading-text {
-  color: $gray-dark;
-  font-size: $font-size-md;
+  color: v.$gray-dark;
+  font-size: v.$font-size-md;
 }

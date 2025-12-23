@@ -1,25 +1,25 @@
-@import "styles/variables";
-@import "styles/mixins";
+@use "styles/variables" as v;
+@use "styles/mixins" as m;
 
 .header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: $shadow-md;
+  box-shadow: v.$shadow-md;
 }
 
 .header-container {
-  @include flex-between;
+  @include m.flex-between;
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 $spacing-md;
+  padding: 0 v.$spacing-md;
 }
 
 .logo {
-  @include flex-center;
-  gap: $spacing-sm;
-  font-size: $font-size-xl;
+  @include m.flex-center;
+  gap: v.$spacing-sm;
+  font-size: v.$font-size-xl;
   font-weight: 700;
   color: inherit;
   text-decoration: none;
@@ -38,9 +38,9 @@
 
 .nav-links {
   display: flex;
-  gap: $spacing-md;
+  gap: v.$spacing-md;
 
-  @include mobile {
+  @include m.mobile {
     display: none;
   }
 }
