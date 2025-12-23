@@ -1,0 +1,61 @@
+<mat-card class="cart-item">
+  <div class="item-image">
+    <img [src]="item.product.image" [alt]="item.product.name" loading="lazy" />
+  </div>
+
+  <div class="item-details">
+    <a [routerLink]="['/products', item.product.id]" class="item-name">
+      {{ item.product.name }}
+    </a>
+    <p class="item-category">{{ item.product.category }}</p>
+    <p class="item-price">\${{ item.product.price | number: "1.2-2" }} c/u</p>
+  </div>
+
+  <div class="item-quantity">
+    <button
+      mat-icon-button
+      (click)="decreaseQuantity()"
+      [disabled]="item.quantity <= 1"
+      aria-label="Disminuir cantidad"
+    >
+      <mat-icon>remove</mat-icon>
+    </button>
+
+    <input
+      type="number"
+      [(ngModel)]="currentQuantity"
+      (change)="onQuantityChange()"
+      [min]="1"
+      [max]="item.product.stock"
+      class="quantity-input"
+      aria-label="Cantidad"
+    />
+
+    <button
+      mat-icon-button
+      (click)="increaseQuantity()"
+      [disabled]="item.quantity >= item.product.stock"
+      aria-label="Aumentar cantidad"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div class="item-total">
+    <p class="total-label">Total</p>
+    <p class="total-price">
+      ${{ item.product.price * item.quantity | number: "1.2-2" }}
+    </p>
+  </div>
+
+  <div class="item-actions">
+    <button
+      mat-icon-button
+      color="warn"
+      (click)="onRemove()"
+      aria-label="Eliminar producto"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</mat-card>
