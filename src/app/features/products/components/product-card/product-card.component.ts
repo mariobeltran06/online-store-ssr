@@ -12,7 +12,7 @@ import { addToCart } from '../../../../store/cart/cart.actions';
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css'],
+  styleUrls: ['./product-card.component.scss'],
   imports: [
     CommonModule,
     RouterModule,
