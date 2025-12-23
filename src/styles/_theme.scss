@@ -1,0 +1,72 @@
+@use '@angular/material' as mat;
+@import 'variables';
+
+@include mat.core();
+
+// Definir paletas personalizadas
+$app-primary: mat.define-palette((
+  50: $pastel-blue-light,
+  100: lighten($pastel-blue, 10%),
+  200: lighten($pastel-blue, 5%),
+  300: $pastel-blue,
+  400: darken($pastel-blue, 5%),
+  500: $pastel-blue-dark,
+  600: darken($pastel-blue-dark, 5%),
+  700: darken($pastel-blue-dark, 10%),
+  800: darken($pastel-blue-dark, 15%),
+  900: darken($pastel-blue-dark, 20%),
+  contrast: (
+    50: $black,
+    100: $black,
+    200: $black,
+    300: $black,
+    400: $black,
+    500: $white,
+    600: $white,
+    700: $white,
+    800: $white,
+    900: $white,
+  )
+));
+
+$app-accent: mat.define-palette((
+  50: $pastel-purple-light,
+  100: lighten($pastel-purple, 10%),
+  200: lighten($pastel-purple, 5%),
+  300: $pastel-purple,
+  400: darken($pastel-purple, 5%),
+  500: $pastel-purple-dark,
+  600: darken($pastel-purple-dark, 5%),
+  700: darken($pastel-purple-dark, 10%),
+  800: darken($pastel-purple-dark, 15%),
+  900: darken($pastel-purple-dark, 20%),
+  contrast: (
+    50: $black,
+    100: $black,
+    200: $black,
+    300: $black,
+    400: $black,
+    500: $white,
+    600: $white,
+    700: $white,
+    800: $white,
+    900: $white,
+  )
+));
+
+$app-warn: mat.define-palette(mat.$red-palette);
+
+// Crear tema
+$app-theme: mat.define-light-theme((
+  color: (
+    primary: $app-primary,
+    accent: $app-accent,
+    warn: $app-warn,
+  ),
+  typography: mat.define-typography-config(
+    $font-family: $font-family,
+  ),
+  density: 0,
+));
+
+@include mat.all-component-themes($app-theme);
