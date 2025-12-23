@@ -1,0 +1,58 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: $shadow-md;
+}
+
+.header-container {
+  @include flex-between;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+.logo {
+  @include flex-center;
+  gap: $spacing-sm;
+  font-size: $font-size-xl;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  mat-icon {
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.nav-links {
+  display: flex;
+  gap: $spacing-md;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.nav-link {
+  &.active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.cart-button {
+  ::ng-deep .mat-badge-content {
+    font-weight: 600;
+  }
+}
