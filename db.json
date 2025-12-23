@@ -1,0 +1,86 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Laptop Profesional",
+      "description": "Laptop de alto rendimiento con procesador Intel i7, 16GB RAM y SSD 512GB. Perfecta para trabajo y entretenimiento.",
+      "price": 1299.99,
+      "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500",
+      "category": "Electrónica",
+      "stock": 15,
+      "rating": 4.5
+    },
+    {
+      "id": "2",
+      "name": "Smartphone Premium",
+      "description": "Smartphone con cámara de 108MP, pantalla AMOLED de 6.7 pulgadas y batería de larga duración.",
+      "price": 899.99,
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500",
+      "category": "Electrónica",
+      "stock": 25,
+      "rating": 4.8
+    },
+    {
+      "id": "3",
+      "name": "Auriculares Inalámbricos",
+      "description": "Auriculares con cancelación de ruido activa, 30 horas de batería y sonido premium.",
+      "price": 249.99,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+      "category": "Accesorios",
+      "stock": 50,
+      "rating": 4.6
+    },
+    {
+      "id": "4",
+      "name": "Smartwatch Deportivo",
+      "description": "Reloj inteligente con monitor de salud, GPS y resistencia al agua.",
+      "price": 329.99,
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+      "category": "Accesorios",
+      "stock": 30,
+      "rating": 4.4
+    },
+    {
+      "id": "5",
+      "name": "Tablet Pro",
+      "description": "Tablet de 12.9 pulgadas con stylus incluido, ideal para creativos y profesionales.",
+      "price": 799.99,
+      "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500",
+      "category": "Electrónica",
+      "stock": 20,
+      "rating": 4.7
+    },
+    {
+      "id": "6",
+      "name": "Cámara Mirrorless",
+      "description": "Cámara profesional de 24MP con lentes intercambiables y video 4K.",
+      "price": 1499.99,
+      "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500",
+      "category": "Fotografía",
+      "stock": 10,
+      "rating": 4.9
+    },
+    {
+      "id": "7",
+      "name": "Teclado Mecánico RGB",
+      "description": "Teclado gaming con switches mecánicos, iluminación RGB personalizable.",
+      "price": 149.99,
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500",
+      "category": "Accesorios",
+      "stock": 40,
+      "rating": 4.3
+    },
+    {
+      "id": "8",
+      "name": "Monitor 4K UHD",
+      "description": "Monitor de 27 pulgadas con resolución 4K, HDR y 144Hz.",
+      "price": 549.99,
+      "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500",
+      "category": "Electrónica",
+      "stock": 18,
+      "rating": 4.6
+    }
+  ],
+  "cart": [],
+  "orders": []
+}
