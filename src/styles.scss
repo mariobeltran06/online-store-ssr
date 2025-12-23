@@ -1,6 +1,6 @@
-@import 'styles/variables';
-@import 'styles/mixins';
-@import 'styles/theme';
+@use 'styles/variables' as *;
+@use 'styles/mixins' as m;
+@use 'styles/theme';
 
 * {
   margin: 0;
@@ -42,7 +42,7 @@ button {
   margin: 0 auto;
   padding: 0 $spacing-lg;
 
-  @include mobile {
+  @include m.mobile {
     padding: 0 $spacing-md;
   }
 }
