@@ -1,0 +1,133 @@
+<div class="cart-container">
+  <header class="cart-header">
+    <h1>
+      <mat-icon>shopping_cart</mat-icon>
+      Mi Carrito
+    </h1>
+  </header>
+  @if (loading$ | async) {
+    <app-loading-spinner></app-loading-spinner>
+  }
+
+  @if (cartSummary$ | async; as cart) {
+    <div class="cart-content">
+      @if (cart.items.length === 0 && !(loading$ | async)) {
+        <div class="empty-cart">
+          <mat-icon>shopping_cart</mat-icon>
+          <h2>Tu carrito está vacío</h2>
+          <p>Agrega productos para comenzar tu compra</p>
+          <button mat-raised-button color="primary" routerLink="/products">
+            <mat-icon>store</mat-icon>
+            Ver Productos
+          </button>
+        </div>
+      }
+
+      @if (cart.items.length > 0) {
+        <div class="cart-with-items">
+          <div class="cart-items-section">
+            <div class="items-header">
+              <h2>Productos ({{ cart.totalItems }})</h2>
+              <button
+                mat-button
+                color="warn"
+                (click)="onClearCart()"
+                aria-label="Vaciar carrito"
+              >
+                <mat-icon>delete_sweep</mat-icon>
+                Vaciar Carrito
+              </button>
+            </div>
+
+            <div class="items-list">
+              @for (item of cart.items; track item.id) {
+                <app-cart-item [item]="item"></app-cart-item>
+              }
+            </div>
+          </div>
+
+          <div class="cart-summary-section">
+            <mat-card class="summary-card">
+              <mat-card-header>
+                <mat-card-title>Resumen de Compra</mat-card-title>
+              </mat-card-header>
+
+              <mat-card-content>
+                <div class="summary-row">
+                  <span>Subtotal ({{ cart.totalItems }} productos)</span>
+                  <span class="amount"
+                    >${{ cart.totalPrice | number: "1.2-2" }}</span
+                  >
+                </div>
+
+                <div class="summary-row">
+                  <span>Envío</span>
+                  <span class="amount free">
+                    {{ cart.totalPrice > 50 ? "GRATIS" : "$5.00" }}
+                  </span>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <div class="summary-row total">
+                  <span>Total</span>
+                  <span class="amount">
+                    ${{
+                      cart.totalPrice + (cart.totalPrice > 50 ? 0 : 5)
+                        | number: "1.2-2"
+                    }}
+                  </span>
+                </div>
+                @if (cart.totalPrice <= 50) {
+                  <div class="shipping-notice">
+                    <mat-icon>local_shipping</mat-icon>
+                    <span>
+                      Agrega ${{ 50 - cart.totalPrice | number: "1.2-2" }} más
+                      para envío gratis
+                    </span>
+                  </div>
+                }
+              </mat-card-content>
+
+              <mat-card-actions>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="onProceedToCheckout()"
+                  class="checkout-btn"
+                >
+                  <mat-icon>payment</mat-icon>
+                  Proceder al Pago
+                </button>
+
+                <button
+                  mat-stroked-button
+                  routerLink="/products"
+                  class="continue-shopping-btn"
+                >
+                  <mat-icon>arrow_back</mat-icon>
+                  Seguir Comprando
+                </button>
+              </mat-card-actions>
+            </mat-card>
+
+            <div class="trust-badges">
+              <div class="badge">
+                <mat-icon>verified_user</mat-icon>
+                <span>Compra Segura</span>
+              </div>
+              <div class="badge">
+                <mat-icon>local_shipping</mat-icon>
+                <span>Envío Rápido</span>
+              </div>
+              <div class="badge">
+                <mat-icon>replay</mat-icon>
+                <span>Devolución Fácil</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
