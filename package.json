@@ -1,13 +1,20 @@
 {
   "name": "app-online-store",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:ssr": "ng serve --configuration=development",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:app-online-store": "node dist/app-online-store/server/server.mjs"
+    "build:ssr": "ng build --configuration=production",
+    "serve:ssr:app-online-store": "node dist/app-online-store/server/server.mjs",
+    "api": "json-server --watch db.json --port 3000",
+    "lint": "ng lint",
+    "format": "prettier --write \"src/**/*.{ts,html,scss,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,html,scss,json}\"",
+    "lint:fix": "ng lint --fix"
   },
   "prettier": {
     "overrides": [
@@ -21,32 +28,45 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^20.3.15",
+    "@angular/cdk": "^20.2.14",
     "@angular/common": "^20.1.0",
     "@angular/compiler": "^20.1.0",
     "@angular/core": "^20.1.0",
     "@angular/forms": "^20.1.0",
+    "@angular/material": "^20.2.14",
     "@angular/platform-browser": "^20.1.0",
     "@angular/platform-server": "^20.1.0",
     "@angular/router": "^20.1.0",
     "@angular/ssr": "^20.1.5",
+    "@ngrx/effects": "^20.1.0",
+    "@ngrx/store": "^20.1.0",
+    "@ngrx/store-devtools": "^20.1.0",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular-eslint/builder": "21.0.1",
     "@angular/build": "^20.1.5",
     "@angular/cli": "^20.1.5",
     "@angular/compiler-cli": "^20.1.0",
+    "@eslint/js": "^9.39.1",
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
+    "angular-eslint": "21.0.1",
+    "eslint": "^9.39.1",
     "jasmine-core": "~5.8.0",
+    "json-server": "^1.0.0-beta.3",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.2"
+    "prettier": "^3.7.4",
+    "typescript": "~5.8.2",
+    "typescript-eslint": "8.46.4"
   }
 }

@@ -1,0 +1,82 @@
+# Dependencias
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Compilados y builds
+dist/
+.angular/
+out-tsc/
+tmp/
+temp/
+build/
+
+# Caché
+.cache/
+.parcel-cache/
+.npm/
+.eslintcache/
+
+# Archivos de configuración generados
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Sistema operativo
+Thumbs.db
+
+# Archivos de configuración específicos (opcional)
+# angular.json
+# tsconfig.json
+# package.json
+
+# Archivos generados por Angular
+*.ngfactory.ts
+*.ngstyle.ts
+*.ngsummary.json
+
+# Archivos de prueba generados
+*.spec.ts.snap
+
+# Documentación compilada
+docs/
+
+# Archivos de base de datos mock
+db.json
+
+# Archivos de ambiente (si contienen datos sensibles)
+# .env
+# .env.local
+# .env.*.local
+
+# HTML generado por SSR
+*.server.html
+
+# Archivos de licencia y readme (opcional)
+# LICENSE
+# README.md
+# CHANGELOG.md
+
+# Archivos de configuración de herramientas
+.editorconfig
+.gitignore
+.prettierignore
