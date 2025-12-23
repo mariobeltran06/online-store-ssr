@@ -1,0 +1,299 @@
+@use "styles/variables" as v;
+@use "styles/mixins" as m;
+
+.checkout-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: v.$spacing-xl v.$spacing-lg;
+
+  @include m.mobile {
+    padding: v.$spacing-lg v.$spacing-md;
+  }
+}
+
+.checkout-header {
+  margin-bottom: v.$spacing-xl;
+
+  h1 {
+    @include m.flex-center;
+    gap: v.$spacing-md;
+    font-size: v.$font-size-xxl;
+    color: v.$pastel-blue-dark;
+
+    @include m.mobile {
+      font-size: v.$font-size-xl;
+    }
+
+    mat-icon {
+      font-size: 36px;
+      width: 36px;
+      height: 36px;
+    }
+  }
+}
+
+.empty-cart {
+  @include m.flex-center;
+  @include m.flex-column;
+  gap: v.$spacing-lg;
+  padding: v.$spacing-xxl;
+  text-align: center;
+
+  mat-icon {
+    font-size: 120px;
+    width: 120px;
+    height: 120px;
+    color: v.$gray-medium;
+  }
+
+  h2 {
+    font-size: v.$font-size-xl;
+    color: v.$gray-dark;
+  }
+
+  button mat-icon {
+    margin-right: v.$spacing-xs;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.checkout-content {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: v.$spacing-xl;
+
+  @include m.mobile-and-tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checkout-form {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+::ng-deep .mat-stepper-horizontal {
+  background: transparent;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-md;
+  padding: v.$spacing-lg 0;
+
+  h2 {
+    font-size: v.$font-size-lg;
+    color: v.$black;
+    margin-bottom: v.$spacing-sm;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: v.$spacing-md;
+
+  @include m.mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.payment-notice {
+  @include m.flex-center;
+  gap: v.$spacing-sm;
+  padding: v.$spacing-md;
+  background: v.$pastel-blue-light;
+  border-radius: v.$border-radius-md;
+  color: v.$pastel-blue-dark;
+  margin-bottom: v.$spacing-md;
+
+  mat-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  p {
+    margin: 0;
+    font-size: v.$font-size-sm;
+    font-weight: 500;
+  }
+}
+
+.step-actions {
+  @include m.flex-between;
+  padding-top: v.$spacing-lg;
+  gap: v.$spacing-md;
+
+  button {
+    padding: v.$spacing-sm v.$spacing-lg;
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.review-section {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-lg;
+  padding: v.$spacing-lg 0;
+
+  h2 {
+    font-size: v.$font-size-xl;
+    color: v.$black;
+  }
+}
+
+.review-card {
+  margin-bottom: v.$spacing-md;
+
+  mat-card-header {
+    margin-bottom: v.$spacing-md;
+  }
+}
+
+.review-item {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: v.$spacing-md;
+  align-items: center;
+  padding: v.$spacing-sm 0;
+
+  img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: v.$border-radius-sm;
+  }
+
+  .item-info {
+    h4 {
+      font-size: v.$font-size-md;
+      margin: 0 0 v.$spacing-xs 0;
+    }
+
+    p {
+      font-size: v.$font-size-sm;
+      color: v.$gray-dark;
+      margin: 0;
+    }
+  }
+
+  .item-price {
+    font-size: v.$font-size-lg;
+    font-weight: 600;
+    color: v.$pastel-blue-dark;
+  }
+}
+
+.review-totals {
+  padding-top: v.$spacing-md;
+
+  .total-row {
+    @include m.flex-between;
+    padding: v.$spacing-xs 0;
+    font-size: v.$font-size-md;
+
+    &.final {
+      font-size: v.$font-size-lg;
+      font-weight: 700;
+      color: v.$black;
+      padding-top: v.$spacing-sm;
+
+      span:last-child {
+        color: v.$pastel-blue-dark;
+        font-size: v.$font-size-xl;
+      }
+    }
+  }
+}
+
+.payment-info {
+  display: flex;
+  gap: v.$spacing-md;
+  align-items: flex-start;
+
+  mat-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: v.$pastel-purple-dark;
+  }
+
+  p {
+    margin: v.$spacing-xs 0;
+    font-size: v.$font-size-sm;
+
+    strong {
+      font-size: v.$font-size-md;
+    }
+  }
+}
+
+.order-summary {
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+
+  @include m.mobile-and-tablet {
+    display: none;
+  }
+
+  mat-card {
+    margin-bottom: v.$spacing-lg;
+  }
+
+  .summary-row {
+    @include m.flex-between;
+    padding: v.$spacing-sm 0;
+    font-size: v.$font-size-md;
+
+    &.total {
+      font-size: v.$font-size-lg;
+      font-weight: 700;
+      padding-top: v.$spacing-md;
+
+      span:last-child {
+        color: v.$pastel-blue-dark;
+        font-size: v.$font-size-xl;
+      }
+    }
+  }
+}
+
+.security-badges {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-sm;
+
+  .badge {
+    @include m.flex-center;
+    gap: v.$spacing-sm;
+    padding: v.$spacing-md;
+    background: v.$white;
+    border-radius: v.$border-radius-md;
+    box-shadow: v.$shadow-sm;
+
+    mat-icon {
+      color: v.$success;
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+    }
+
+    span {
+      font-size: v.$font-size-sm;
+      font-weight: 600;
+      color: v.$gray-dark;
+    }
+  }
+}

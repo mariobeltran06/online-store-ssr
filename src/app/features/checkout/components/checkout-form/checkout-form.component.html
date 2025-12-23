@@ -1,0 +1,414 @@
+<div class="checkout-container">
+  <header class="checkout-header">
+    <h1>
+      <mat-icon>payment</mat-icon>
+      Finalizar Compra
+    </h1>
+  </header>
+
+  @if (cartSummary$ | async; as cart) {
+    <div class="checkout-content">
+      @if (cart.items.length === 0) {
+        <div class="empty-cart">
+          <mat-icon>shopping_cart</mat-icon>
+          <h2>Tu carrito está vacío</h2>
+          <p>Agrega productos antes de proceder al checkout</p>
+          <button mat-raised-button color="primary" routerLink="/products">
+            <mat-icon>store</mat-icon>
+            Ver Productos
+          </button>
+        </div>
+      }
+
+      @if (cart.items.length > 0) {
+        <div class="checkout-form">
+          <mat-stepper [linear]="true" #stepper>
+            <!-- Paso 1: Información del Cliente -->
+            <mat-step [stepControl]="customerForm">
+              <form [formGroup]="customerForm">
+                <ng-template matStepLabel>Información Personal</ng-template>
+
+                <div class="form-section">
+                  <h2>Datos de Contacto</h2>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nombre Completo</mat-label>
+                    <input
+                      matInput
+                      formControlName="fullName"
+                      placeholder="Juan Pérez"
+                      required
+                    />
+                    <mat-icon matPrefix>person</mat-icon>
+                    @if (customerForm.get("fullName")?.hasError("required")) {
+                      <mat-error> El nombre es requerido </mat-error>
+                    }
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input
+                      matInput
+                      formControlName="email"
+                      type="email"
+                      placeholder="correo@ejemplo.com"
+                      required
+                    />
+                    <mat-icon matPrefix>email</mat-icon>
+                    @if (customerForm.get("email")?.hasError("required")) {
+                      <mat-error> El email es requerido </mat-error>
+                    }
+                    @if (customerForm.get("email")?.hasError("email")) {
+                      <mat-error> Email inválido </mat-error>
+                    }
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Teléfono</mat-label>
+                    <input
+                      matInput
+                      formControlName="phone"
+                      type="tel"
+                      placeholder="+1 234 567 8900"
+                      required
+                    />
+                    <mat-icon matPrefix>phone</mat-icon>
+                    @if (customerForm.get("phone")?.hasError("required")) {
+                      <mat-error> El teléfono es requerido </mat-error>
+                    }
+                  </mat-form-field>
+
+                  <h2>Dirección de Envío</h2>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Dirección</mat-label>
+                    <input
+                      matInput
+                      formControlName="address"
+                      placeholder="Calle 123, Apartamento 4B"
+                      required
+                    />
+                    <mat-icon matPrefix>home</mat-icon>
+                    @if (customerForm.get("address")?.hasError("required")) {
+                      <mat-error> La dirección es requerida </mat-error>
+                    }
+                  </mat-form-field>
+
+                  <div class="form-row">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Ciudad</mat-label>
+                      <input
+                        matInput
+                        formControlName="city"
+                        placeholder="Nueva York"
+                        required
+                      />
+                      @if (customerForm.get("city")?.hasError("required")) {
+                        <mat-error> La ciudad es requerida </mat-error>
+                      }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                      <mat-label>Código Postal</mat-label>
+                      <input
+                        matInput
+                        formControlName="zipCode"
+                        placeholder="10001"
+                        required
+                      />
+                      @if (customerForm.get("zipCode")?.hasError("required")) {
+                        <mat-error> El código postal es requerido </mat-error>
+                      }
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="step-actions">
+                  <button mat-button routerLink="/cart">
+                    <mat-icon>arrow_back</mat-icon>
+                    Volver al Carrito
+                  </button>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    matStepperNext
+                    [disabled]="!customerForm.valid"
+                  >
+                    Continuar
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+
+            <!-- Paso 2: Información de Pago -->
+            <mat-step [stepControl]="paymentForm">
+              <form [formGroup]="paymentForm">
+                <ng-template matStepLabel>Información de Pago</ng-template>
+
+                <div class="form-section">
+                  <h2>Datos de la Tarjeta</h2>
+
+                  <div class="payment-notice">
+                    <mat-icon>info</mat-icon>
+                    <p>
+                      Esta es una simulación. No se realizará ningún cargo real.
+                    </p>
+                  </div>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Número de Tarjeta</mat-label>
+                    <input
+                      matInput
+                      formControlName="cardNumber"
+                      placeholder="1234 5678 9012 3456"
+                      maxlength="19"
+                      (input)="formatCardNumber($event)"
+                      required
+                    />
+                    <mat-icon matPrefix>credit_card</mat-icon>
+                    @if (paymentForm.get("cardNumber")?.hasError("required")) {
+                      <mat-error> El número de tarjeta es requerido </mat-error>
+                    }
+                    @if (paymentForm.get("cardNumber")?.hasError("pattern")) {
+                      <mat-error> Número de tarjeta inválido </mat-error>
+                    }
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nombre en la Tarjeta</mat-label>
+                    <input
+                      matInput
+                      formControlName="cardHolder"
+                      placeholder="JUAN PEREZ"
+                      required
+                    />
+                    <mat-icon matPrefix>person</mat-icon>
+                    @if (paymentForm.get("cardHolder")?.hasError("required")) {
+                      <mat-error> El nombre es requerido </mat-error>
+                    }
+                  </mat-form-field>
+
+                  <div class="form-row">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Fecha de Expiración</mat-label>
+                      <input
+                        matInput
+                        formControlName="expirationDate"
+                        placeholder="MM/AA"
+                        maxlength="5"
+                        (input)="formatExpirationDate($event)"
+                        required
+                      />
+                      <mat-icon matPrefix>calendar_today</mat-icon>
+                      @if (
+                        paymentForm.get("expirationDate")?.hasError("required")
+                      ) {
+                        <mat-error> La fecha es requerida </mat-error>
+                      }
+                      @if (
+                        paymentForm.get("expirationDate")?.hasError("pattern")
+                      ) {
+                        <mat-error> Formato inválido (MM/AA) </mat-error>
+                      }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                      <mat-label>CVV</mat-label>
+                      <input
+                        matInput
+                        formControlName="cvv"
+                        type="password"
+                        placeholder="123"
+                        maxlength="4"
+                        required
+                      />
+                      <mat-icon matPrefix>lock</mat-icon>
+                      @if (paymentForm.get("cvv")?.hasError("required")) {
+                        <mat-error> El CVV es requerido </mat-error>
+                      }
+                      @if (paymentForm.get("cvv")?.hasError("pattern")) {
+                        <mat-error> CVV inválido (3-4 dígitos) </mat-error>
+                      }
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="step-actions">
+                  <button mat-button matStepperPrevious>
+                    <mat-icon>arrow_back</mat-icon>
+                    Atrás
+                  </button>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    matStepperNext
+                    [disabled]="!paymentForm.valid"
+                  >
+                    Continuar
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+
+            <!-- Paso 3: Revisar Orden -->
+            <mat-step>
+              <ng-template matStepLabel>Revisión y Confirmación</ng-template>
+
+              <div class="review-section">
+                <h2>Resumen del Pedido</h2>
+
+                <mat-card class="review-card">
+                  <mat-card-header>
+                    <mat-card-title
+                      >Productos ({{ cart.totalItems }})</mat-card-title
+                    >
+                  </mat-card-header>
+                  <mat-card-content>
+                    <div class="review-item" *ngFor="let item of cart.items">
+                      <img
+                        [src]="item.product.image"
+                        [alt]="item.product.name"
+                      />
+                      <div class="item-info">
+                        <h4>{{ item.product.name }}</h4>
+                        <p>Cantidad: {{ item.quantity }}</p>
+                      </div>
+                      <div class="item-price">
+                        ${{
+                          item.product.price * item.quantity | number: "1.2-2"
+                        }}
+                      </div>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="review-totals">
+                      <div class="total-row">
+                        <span>Subtotal:</span>
+                        <span>${{ cart.totalPrice | number: "1.2-2" }}</span>
+                      </div>
+                      <div class="total-row">
+                        <span>Envío:</span>
+                        <span>{{
+                          cart.totalPrice > 50 ? "GRATIS" : "$5.00"
+                        }}</span>
+                      </div>
+                      <div class="total-row final">
+                        <span>Total:</span>
+                        <span
+                          >${{
+                            cart.totalPrice + (cart.totalPrice > 50 ? 0 : 5)
+                              | number: "1.2-2"
+                          }}</span
+                        >
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+
+                <mat-card class="review-card">
+                  <mat-card-header>
+                    <mat-card-title>Información de Envío</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p>
+                      <strong>{{ customerForm.value.fullName }}</strong>
+                    </p>
+                    <p>{{ customerForm.value.email }}</p>
+                    <p>{{ customerForm.value.phone }}</p>
+                    <p>{{ customerForm.value.address }}</p>
+                    <p>
+                      {{ customerForm.value.city }},
+                      {{ customerForm.value.zipCode }}
+                    </p>
+                  </mat-card-content>
+                </mat-card>
+
+                <mat-card class="review-card">
+                  <mat-card-header>
+                    <mat-card-title>Método de Pago</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <div class="payment-info">
+                      <mat-icon>credit_card</mat-icon>
+                      <div>
+                        <p>
+                          <strong>{{ paymentForm.value.cardHolder }}</strong>
+                        </p>
+                        <p>
+                          **** **** ****
+                          {{ paymentForm.value.cardNumber?.slice(-4) }}
+                        </p>
+                        <p>Expira: {{ paymentForm.value.expirationDate }}</p>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+
+                <div class="step-actions">
+                  <button mat-button matStepperPrevious>
+                    <mat-icon>arrow_back</mat-icon>
+                    Atrás
+                  </button>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="onConfirmOrder(cart)"
+                    [disabled]="isProcessing"
+                  >
+                    <mat-icon>{{
+                      isProcessing ? "hourglass_empty" : "check_circle"
+                    }}</mat-icon>
+                    {{ isProcessing ? "Procesando..." : "Confirmar Pedido" }}
+                  </button>
+                </div>
+              </div>
+            </mat-step>
+          </mat-stepper>
+        </div>
+
+        <!-- Resumen de la Orden Sidebar -->
+        <div class="order-summary">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Resumen</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="summary-row">
+                <span>Productos ({{ cart.totalItems }})</span>
+                <span>${{ cart.totalPrice | number: "1.2-2" }}</span>
+              </div>
+              <div class="summary-row">
+                <span>Envío</span>
+                <span>{{ cart.totalPrice > 50 ? "GRATIS" : "$5.00" }}</span>
+              </div>
+              <mat-divider></mat-divider>
+              <div class="summary-row total">
+                <span>Total</span>
+                <span
+                  >${{
+                    cart.totalPrice + (cart.totalPrice > 50 ? 0 : 5)
+                      | number: "1.2-2"
+                  }}</span
+                >
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <div class="security-badges">
+            <div class="badge">
+              <mat-icon>lock</mat-icon>
+              <span>Pago Seguro SSL</span>
+            </div>
+            <div class="badge">
+              <mat-icon>verified_user</mat-icon>
+              <span>Compra Protegida</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
