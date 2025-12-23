@@ -1,0 +1,46 @@
+<mat-card class="product-card">
+  <a [routerLink]="['/products', product.id]" class="card-link">
+    <div class="image-container">
+      <img
+        [src]="product.image"
+        [alt]="product.name"
+        class="product-image"
+        loading="lazy"
+      />
+      <mat-chip class="rating-chip" [highlighted]="true">
+        <mat-icon>star</mat-icon>
+        {{ product.rating }}
+      </mat-chip>
+    </div>
+
+    <mat-card-content class="card-content">
+      <mat-chip class="category-chip">{{ product.category }}</mat-chip>
+      <h3 class="product-name">{{ product.name }}</h3>
+      <p class="product-description">{{ product.description }}</p>
+
+      <div class="card-footer">
+        <div class="price-section">
+          <span class="price">\${{ product.price | number: "1.2-2" }}</span>
+          <span class="stock" [class.low-stock]="product.stock < 10">
+            <mat-icon>inventory_2</mat-icon>
+            {{ product.stock }} disponibles
+          </span>
+        </div>
+      </div>
+    </mat-card-content>
+  </a>
+
+  <mat-card-actions class="card-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onAddToCart()"
+      [disabled]="product.stock === 0"
+      class="add-to-cart-btn"
+      aria-label="Agregar al carrito"
+    >
+      <mat-icon>add_shopping_cart</mat-icon>
+      {{ product.stock === 0 ? "Sin Stock" : "Agregar al Carrito" }}
+    </button>
+  </mat-card-actions>
+</mat-card>
