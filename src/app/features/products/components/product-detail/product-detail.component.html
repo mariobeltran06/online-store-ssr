@@ -1,0 +1,120 @@
+<div class="product-detail-container">
+  <button
+    mat-button
+    routerLink="/products"
+    class="back-button"
+    aria-label="Volver a productos"
+  >
+    <mat-icon>arrow_back</mat-icon>
+    Volver a Productos
+  </button>
+
+  @if (loading$ | async) {
+    <app-loading-spinner></app-loading-spinner>
+  }
+
+  @if (product$ | async; as product) {
+    <div class="product-detail">
+      <div class="product-image-section">
+        <img [src]="product.image" [alt]="product.name" class="product-image" />
+      </div>
+
+      <div class="product-info-section">
+        <mat-chip class="category-chip">{{ product.category }}</mat-chip>
+
+        <h1 class="product-title">{{ product.name }}</h1>
+
+        <div class="rating-section">
+          <mat-icon class="star-icon">star</mat-icon>
+          <span class="rating-value">{{ product.rating }}</span>
+          <span class="rating-text">({{ product.rating }} de 5)</span>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="price-section">
+          <span class="price">${{ product.price | number: "1.2-2" }}</span>
+          <div class="stock-info" [class.low-stock]="product.stock < 10">
+            <mat-icon>inventory_2</mat-icon>
+            @if (product.stock > 0) {
+              <span> {{ product.stock }} unidades disponibles </span>
+            }
+            @if (product.stock === 0) {
+              <span class="out-of-stock"> Sin stock </span>
+            }
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="description-section">
+          <h2>Descripción</h2>
+          <p>{{ product.description }}</p>
+        </div>
+
+        <div class="features-section">
+          <h3>Características destacadas</h3>
+          <ul>
+            <li>
+              <mat-icon>check_circle</mat-icon> Envío gratis en compras
+              superiores a $50
+            </li>
+            <li><mat-icon>check_circle</mat-icon> Garantía de 12 meses</li>
+            <li>
+              <mat-icon>check_circle</mat-icon> Devolución gratuita en 30 días
+            </li>
+            <li><mat-icon>check_circle</mat-icon> Soporte técnico 24/7</li>
+          </ul>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="actions-section">
+          <mat-form-field appearance="outline" class="quantity-field">
+            <mat-label>Cantidad</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="quantity"
+              [min]="1"
+              [max]="product.stock"
+              aria-label="Cantidad a agregar"
+            />
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="onAddToCart(product)"
+            [disabled]="product.stock === 0 || quantity < 1"
+            class="add-to-cart-btn"
+          >
+            <mat-icon>add_shopping_cart</mat-icon>
+            {{ product.stock === 0 ? "Sin Stock" : "Agregar al Carrito" }}
+          </button>
+
+          <button
+            mat-stroked-button
+            color="accent"
+            (click)="onBuyNow(product)"
+            [disabled]="product.stock === 0 || quantity < 1"
+            class="buy-now-btn"
+          >
+            <mat-icon>flash_on</mat-icon>
+            Comprar Ahora
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (!(product$ | async) && !(loading$ | async)) {
+    <div class="not-found">
+      <mat-icon>error_outline</mat-icon>
+      <h2>Producto no encontrado</h2>
+      <button mat-raised-button color="primary" routerLink="/products">
+        Ver todos los productos
+      </button>
+    </div>
+  }
+</div>
