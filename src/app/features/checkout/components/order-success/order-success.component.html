@@ -1,0 +1,82 @@
+<div class="success-container">
+  <mat-card class="success-card">
+    <div class="success-icon">
+      <mat-icon>check_circle</mat-icon>
+    </div>
+
+    <h1>¡Pedido Realizado con Éxito!</h1>
+    @if (order) {
+      <p class="order-number">
+        Número de Pedido: <strong>{{ order.id }}</strong>
+      </p>
+    }
+
+    <div class="success-message">
+      <p>
+        Gracias por tu compra. Hemos recibido tu pedido y lo estamos procesando.
+      </p>
+      <p>
+        Recibirás un email de confirmación en breve con los detalles de tu
+        pedido.
+      </p>
+    </div>
+    @if (order) {
+      <mat-card class="order-details">
+        <h3>Detalles del Pedido</h3>
+
+        <div class="detail-row">
+          <span>Fecha:</span>
+          <span>{{ order.orderDate | date: "medium" }}</span>
+        </div>
+
+        <div class="detail-row">
+          <span>Total:</span>
+          <span class="total-amount">${{ order.total | number: "1.2-2" }}</span>
+        </div>
+
+        <div class="detail-row">
+          <span>Estado:</span>
+          <span class="status">{{ getStatusLabel(order.status) }}</span>
+        </div>
+
+        <div class="detail-row">
+          <span>Envío a:</span>
+          <span
+            >{{ order.customerInfo.address }},
+            {{ order.customerInfo.city }}</span
+          >
+        </div>
+      </mat-card>
+    }
+
+    <div class="action-buttons">
+      <button mat-raised-button color="primary" routerLink="/products">
+        <mat-icon>store</mat-icon>
+        Seguir Comprando
+      </button>
+
+      <button mat-stroked-button routerLink="/">
+        <mat-icon>home</mat-icon>
+        Ir al Inicio
+      </button>
+    </div>
+
+    <div class="next-steps">
+      <h3>Próximos Pasos</h3>
+      <ul>
+        <li>
+          <mat-icon>email</mat-icon>
+          Revisa tu correo para la confirmación
+        </li>
+        <li>
+          <mat-icon>local_shipping</mat-icon>
+          Prepararemos tu pedido para envío
+        </li>
+        <li>
+          <mat-icon>notifications_active</mat-icon>
+          Te notificaremos cuando se envíe
+        </li>
+      </ul>
+    </div>
+  </mat-card>
+</div>
