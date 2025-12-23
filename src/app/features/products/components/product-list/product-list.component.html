@@ -1,0 +1,74 @@
+<div class="product-list-container">
+  <header class="page-header">
+    <h1>Nuestros Productos</h1>
+    <p class="subtitle">Encuentra los mejores productos al mejor precio</p>
+  </header>
+
+  <div class="filters-section">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Buscar productos</mat-label>
+      <input
+        matInput
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange()"
+        placeholder="Nombre o descripción..."
+        aria-label="Buscar productos"
+      />
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Categoría</mat-label>
+      <mat-select
+        [(ngModel)]="selectedCategory"
+        (ngModelChange)="onCategoryChange()"
+        aria-label="Filtrar por categoría"
+      >
+        <mat-option [value]="''">Todas</mat-option>
+        <mat-option
+          *ngFor="let category of categories$ | async"
+          [value]="category"
+        >
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ordenar por</mat-label>
+      <mat-select
+        [(ngModel)]="sortBy"
+        (ngModelChange)="onSortChange()"
+        aria-label="Ordenar productos"
+      >
+        <mat-option value="">Predeterminado</mat-option>
+        <mat-option value="name">Nombre</mat-option>
+        <mat-option value="price-asc">Precio: Menor a Mayor</mat-option>
+        <mat-option value="price-desc">Precio: Mayor a Menor</mat-option>
+        <mat-option value="rating">Mejor Valorados</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  @if (loading$ | async) {
+    <app-loading-spinner></app-loading-spinner>
+  }
+
+  @if (!(loading$ | async)) {
+    <div class="products-grid">
+      @for (product of products$ | async; track product.id) {
+        <app-product-card
+          [product]="product"
+          class="product-card-wrapper"
+        ></app-product-card>
+      }
+    </div>
+  }
+
+  @if ((products$ | async)?.length === 0 && !(loading$ | async)) {
+    <div class="no-results">
+      <mat-icon>search_off</mat-icon>
+      <h2>No se encontraron productos</h2>
+      <p>Intenta ajustar los filtros de búsqueda</p>
+    </div>
+  }
+</div>
