@@ -5,7 +5,7 @@
       "name": "Laptop Profesional",
       "description": "Laptop de alto rendimiento con procesador Intel i7, 16GB RAM y SSD 512GB. Perfecta para trabajo y entretenimiento.",
       "price": 1299.99,
-      "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500",
+      "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=200&fit=crop",
       "category": "Electrónica",
       "stock": 15,
       "rating": 4.5
@@ -15,7 +15,7 @@
       "name": "Smartphone Premium",
       "description": "Smartphone con cámara de 108MP, pantalla AMOLED de 6.7 pulgadas y batería de larga duración.",
       "price": 899.99,
-      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500",
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=200&fit=crop",
       "category": "Electrónica",
       "stock": 25,
       "rating": 4.8
@@ -24,8 +24,8 @@
       "id": "3",
       "name": "Auriculares Inalámbricos",
       "description": "Auriculares con cancelación de ruido activa, 30 horas de batería y sonido premium.",
-      "price": 249.99,
-      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=200&fit=crop",
       "category": "Accesorios",
       "stock": 50,
       "rating": 4.6
@@ -35,7 +35,7 @@
       "name": "Smartwatch Deportivo",
       "description": "Reloj inteligente con monitor de salud, GPS y resistencia al agua.",
       "price": 329.99,
-      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=200&fit=crop",
       "category": "Accesorios",
       "stock": 30,
       "rating": 4.4
@@ -45,7 +45,7 @@
       "name": "Tablet Pro",
       "description": "Tablet de 12.9 pulgadas con stylus incluido, ideal para creativos y profesionales.",
       "price": 799.99,
-      "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500",
+      "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=200&fit=crop",
       "category": "Electrónica",
       "stock": 20,
       "rating": 4.7
@@ -55,7 +55,7 @@
       "name": "Cámara Mirrorless",
       "description": "Cámara profesional de 24MP con lentes intercambiables y video 4K.",
       "price": 1499.99,
-      "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500",
+      "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&h=200&fit=crop",
       "category": "Fotografía",
       "stock": 10,
       "rating": 4.9
@@ -64,8 +64,8 @@
       "id": "7",
       "name": "Teclado Mecánico RGB",
       "description": "Teclado gaming con switches mecánicos, iluminación RGB personalizable.",
-      "price": 149.99,
-      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500",
+      "price": 20,
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&h=200&fit=crop",
       "category": "Accesorios",
       "stock": 40,
       "rating": 4.3
@@ -75,12 +75,100 @@
       "name": "Monitor 4K UHD",
       "description": "Monitor de 27 pulgadas con resolución 4K, HDR y 144Hz.",
       "price": 549.99,
-      "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500",
+      "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&h=200&fit=crop",
       "category": "Electrónica",
       "stock": 18,
       "rating": 4.6
     }
   ],
-  "cart": [],
-  "orders": []
+  "cart": [
+    {
+      "id": "cart-1766532435639",
+      "product": {
+        "id": "3",
+        "name": "Auriculares Inalámbricos",
+        "description": "Auriculares con cancelación de ruido activa, 30 horas de batería y sonido premium.",
+        "price": 39.99,
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=200&fit=crop",
+        "category": "Accesorios",
+        "stock": 50,
+        "rating": 4.6
+      },
+      "quantity": 1
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-1766531876015-lj6kbsoij",
+      "items": [
+        {
+          "id": "cart-1766530687981",
+          "product": {
+            "id": "1",
+            "name": "Laptop Profesional",
+            "description": "Laptop de alto rendimiento con procesador Intel i7, 16GB RAM y SSD 512GB. Perfecta para trabajo y entretenimiento.",
+            "price": 1299.99,
+            "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=200&fit=crop",
+            "category": "Electrónica",
+            "stock": 15,
+            "rating": 4.5
+          },
+          "quantity": 1
+        }
+      ],
+      "total": 1299.99,
+      "customerInfo": {
+        "fullName": "Mario Josue Beltran",
+        "email": "mario@gmail.com",
+        "phone": "+503 61767646",
+        "address": "Urbanizacion Montes de San Bartolo 4",
+        "city": "Soyapango",
+        "zipCode": "1001022"
+      },
+      "paymentInfo": {
+        "cardNumber": "**** **** **** 0409",
+        "cardHolder": "Mario Beltran",
+        "expirationDate": "06/28",
+        "cvv": "345"
+      },
+      "orderDate": "2025-12-23T23:17:54.012Z",
+      "status": "pending"
+    },
+    {
+      "id": "ORD-1766532772422-fbk7zfaaq",
+      "items": [
+        {
+          "id": "cart-1766532435639",
+          "product": {
+            "id": "3",
+            "name": "Auriculares Inalámbricos",
+            "description": "Auriculares con cancelación de ruido activa, 30 horas de batería y sonido premium.",
+            "price": 39.99,
+            "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=200&fit=crop",
+            "category": "Accesorios",
+            "stock": 50,
+            "rating": 4.6
+          },
+          "quantity": 1
+        }
+      ],
+      "total": 44.99,
+      "customerInfo": {
+        "fullName": "Mario",
+        "email": "mario@gmail.com",
+        "phone": "6443465",
+        "address": "Urbanizacion",
+        "city": "Soyapango",
+        "zipCode": "100023"
+      },
+      "paymentInfo": {
+        "cardNumber": "**** **** **** 5645",
+        "cardHolder": "Mario Beltra",
+        "expirationDate": "06/28",
+        "cvv": "5567"
+      },
+      "orderDate": "2025-12-23T23:32:50.419Z",
+      "status": "pending"
+    }
+  ]
 }
