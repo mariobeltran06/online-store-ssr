@@ -8,8 +8,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Router } from 'express';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Product } from '../../../../core/models/product.model';
@@ -53,7 +52,6 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
-    console.log('Product ID:', productId);
     if (productId) {
       this.store.dispatch(loadProductDetail({ id: productId }));
     }
