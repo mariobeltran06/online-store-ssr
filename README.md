@@ -1,4 +1,4 @@
-# 🛍️ TiendaOnline - E-commerce con Angular 20
+# 🛍️ Tienda Geek con Angular 20
 
 Aplicación de tienda en línea moderna construida con Angular 20, implementando SSR (Server-Side Rendering), NgRx para gestión de estado, Angular Material con tema personalizado en colores pastel azul y morado, y diseño responsive.
 
@@ -50,6 +50,12 @@ ng serve
 npm run build:ssr
 npm run serve:ssr
 ```
+## Ejecutar Mock API JSON Server
+
+En otra terminal, navega a la carpeta del proyecto y ejecuta:
+```bash
+json-server db.json --port 3000
+```
 ## Decisiones Técnicas
 
 ### 1. Arquitectura del Proyecto
@@ -69,3 +75,34 @@ Hydratación: Se configuró correctamente la hidratación para garantizar que la
 
 ### 4. API Simulada con JSON Server
 Uso de JSON Server: Se utilizó JSON Server para simular las llamadas a la API durante el desarrollo. Esto permite un desarrollo rápido y la posibilidad de realizar pruebas sin necesidad de un backend completo.
+
+## Decisiones de UI/UX
+
+### 1. Diseño Responsivo
+Responsive Design: Se utilizó un diseño responsivo para garantizar que la aplicación funcione bien en dispositivos de diferentes tamaños (móviles, tabletas y escritorios). Esto se logró utilizando Angular Material y técnicas de diseño como Flexbox y CSS Grid.
+
+### 2. Paleta de Colores y Tipografía
+Colores Pastel: Se eligió una paleta de colores pastel para crear una experiencia visual agradable y amigable. Esto ayuda a atraer a los usuarios y hace que la interfaz sea menos intimidante.
+
+Tipografía Clara y Legible: Se seleccionó una tipografía que sea clara y fácil de leer, mejorando la accesibilidad y la experiencia general del usuario.
+
+### 3. Navegación Intuitiva
+Menú de Navegación: Se implementó un menú de navegación claro y accesible, lo que permite a los usuarios encontrar fácilmente los productos y acceder a diferentes secciones de la tienda.
+Acciones Claras: Las acciones disponibles (agregar al carrito, ver detalles del producto) están claramente indicadas, lo que mejora la usabilidad.
+
+### 4. Interacción del Usuario
+Feedback Visual: Se proporciona feedback visual inmediato al usuario cuando se realizan acciones, como agregar un producto al carrito. Esto se logra mediante notificaciones y cambios en el estado de los botones.
+
+### 5. Trade-offs
+Complejidad vs. Rendimiento: La implementación de SSR agrega complejidad al proyecto, pero el beneficio en rendimiento y SEO justifica esta decisión. Se consideró que la mejora en la experiencia del usuario al cargar más rápido era crítica.
+
+Flexibilidad vs. Estructura: La elección de una arquitectura modular con componentes standalone y un estado predecible con NgRx proporciona flexibilidad para escalar, pero también requiere más tiempo de configuración y comprensión por parte del equipo.
+
+## Pendientes Conocidos
+
+- Arreglo del carrito de compras cuando se selecciona un producto nuevo se guarda el producto en el carrito pero para actualizar el carrito con el mismo producto crea otro nuevo producto, para mejorarlo seria de consumir un servicio PUT para actualizar el carrito, y si es el mismo producto solo se deberia sumar la cantidad a ese producto.
+
+- Pantalla de Error o Fallback si falla el servicio del checkout de la compra.
+
+Por motivos de tiempo no se puedo agregar esos cambios.
+
