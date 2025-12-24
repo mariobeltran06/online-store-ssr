@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
 
@@ -9,5 +9,5 @@ import { HeaderComponent } from './shared/components/header/header.component';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('app-online-store');
+  year = new Date().getFullYear();
 }

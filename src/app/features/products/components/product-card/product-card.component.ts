@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -20,6 +20,7 @@ import { addToCart } from '../../../../store/cart/cart.actions';
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
+    NgOptimizedImage
   ],
 })
 export class ProductCardComponent {

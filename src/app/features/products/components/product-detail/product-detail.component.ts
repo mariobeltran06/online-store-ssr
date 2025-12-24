@@ -53,6 +53,7 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
+    console.log('Product ID:', productId);
     if (productId) {
       this.store.dispatch(loadProductDetail({ id: productId }));
     }
