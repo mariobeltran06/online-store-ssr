@@ -81,22 +81,7 @@
       "rating": 4.6
     }
   ],
-  "cart": [
-    {
-      "id": "cart-1766532435639",
-      "product": {
-        "id": "3",
-        "name": "Auriculares Inalámbricos",
-        "description": "Auriculares con cancelación de ruido activa, 30 horas de batería y sonido premium.",
-        "price": 39.99,
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=200&fit=crop",
-        "category": "Accesorios",
-        "stock": 50,
-        "rating": 4.6
-      },
-      "quantity": 1
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "id": "ORD-1766531876015-lj6kbsoij",
