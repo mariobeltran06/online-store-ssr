@@ -2,12 +2,13 @@
   <a [routerLink]="['/products', product.id]" class="card-link">
     <div class="image-container">
       <img
-        [src]="product.image"
+        [ngSrc]="product.image"
         [alt]="product.name"
         class="product-image"
-        loading="lazy"
+        priority="true"
+        fill="true"
       />
-      <mat-chip class="rating-chip" [highlighted]="true">
+      <mat-chip class="rating-chip">
         <mat-icon>star</mat-icon>
         {{ product.rating }}
       </mat-chip>
@@ -20,7 +21,7 @@
 
       <div class="card-footer">
         <div class="price-section">
-          <span class="price">\${{ product.price | number: "1.2-2" }}</span>
+          <span class="price">${{ product.price | number: "1.2-2" }}</span>
           <span class="stock" [class.low-stock]="product.stock < 10">
             <mat-icon>inventory_2</mat-icon>
             {{ product.stock }} disponibles

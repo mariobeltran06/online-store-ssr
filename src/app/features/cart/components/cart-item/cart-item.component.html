@@ -8,7 +8,7 @@
       {{ item.product.name }}
     </a>
     <p class="item-category">{{ item.product.category }}</p>
-    <p class="item-price">\${{ item.product.price | number: "1.2-2" }} c/u</p>
+    <p class="item-price">${{ item.product.price | number: "1.2-2" }} c/u</p>
   </div>
 
   <div class="item-quantity">
